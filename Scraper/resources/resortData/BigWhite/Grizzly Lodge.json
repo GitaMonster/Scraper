@@ -1,0 +1,36 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "GL",
+  "rooms": {
+    "1 Bdrm Plus Den Premium" : [
+      "105",
+      "204",
+      "205",
+      "305"
+    ],
+    "1 Bdrm Premium" : [
+      "303"
+    ],
+    "1 Bdrm Premium w/Hot Tub" : [
+      "203"
+    ],
+    "2 Bdrm Plus Den Premium" : [
+      "302",
+      "306"
+    ],
+    "2 Bdrm Plus Den Premium w/Hot Tub" : [
+      "206"
+    ],
+    "2 Bdrm Premium" : [
+      "307"
+    ],
+    "2 Bdrm Premium w/Hot Tub" : [
+      "107",
+      "207"
+    ],
+    "Studio Premium" : [
+      "103",
+      "106"
+    ]
+  }
+}

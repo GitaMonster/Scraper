@@ -1,8 +1,6 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Scraper.Model;
 using Scraper.Util;
 
@@ -10,38 +8,42 @@ namespace Scraper
 {
 	class Program
 	{
-		static readonly DateTime START_DATE = new DateTime(2017, 12, 8);
+		static readonly string EXCEL_OUTPUT_PATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\resources\ExcelOutput\";
+		static readonly DateTime START_DATE = new DateTime(2017, 12, 29);
 		static readonly DateTime END_DATE = new DateTime(2018, 4, 7);
+		static readonly List<HotelName> HOTEL_NAMES = new List<HotelName>{
+			HotelName.BIG_WHITE_BEARS_PAW,
+			HotelName.BIG_WHITE_BLACK_BEAR,
+			HotelName.BIG_WHITE_BULLET_CREEK,
+			HotelName.BIG_WHITE_CHATEAU_RIDGE,
+			HotelName.BIG_WHITE_COPPER_KETTLE,
+			HotelName.BIG_WHITE_EAGLES,
+			HotelName.BIG_WHITE_GRIZZLY,
+			HotelName.BIG_WHITE_PLAZA_RIDGE,
+			HotelName.BIG_WHITE_PTARMIGAN,
+			HotelName.BIG_WHITE_SNOWY_CREEK,
+			HotelName.BIG_WHITE_STONEBRIDGE,
+			HotelName.BIG_WHITE_STONEGATE,
+			HotelName.BIG_WHITE_SUNDANCE,
+			HotelName.BIG_WHITE_TOWERING_PINES,
+			HotelName.BIG_WHITE_TRAPPERS_CROSSING,
+			HotelName.BIG_WHITE_WHITEFOOT
+		};
 
 		static void Main(string[] args)
 		{
-			// BigWhite.Run(START_DATE, END_DATE);
-			// ExcelWriter.WriteHotelAvailability(new HotelAvailability(HotelName.BIG_WHITE_BULLET_CREEK));
-			DateTime date = new DateTime(2017, 12, 10);
-			DateTime date2 = new DateTime(2018, 4, 7);
-			
-			Console.WriteLine(date.ToShortDateString());
+			Run();
 			Console.ReadKey();
 		}
 
-		private async static void Loop()
+		private static async void Run()
 		{
-			for (int i = 0; i < 5; i++)
+			ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.BIG_WHITE.Name + @"\");
+			foreach (HotelName hotelName in HOTEL_NAMES)
 			{
-				Console.WriteLine("In loop: " + i);
-				// DoThing().Wait();
-				string x = await DoThing();
-				Console.WriteLine(x);
+				HotelAvailability hotelAvailability = await BigWhite.GetAvailabilityForHotel(hotelName, START_DATE, END_DATE);
+				excelWriter.WriteHotelAvailability(hotelAvailability);
 			}
 		}
-
-		private async static Task<string> DoThing()
-		{
-			Task delay = Task.Delay(1000);
-			Console.WriteLine("Doing thing");
-			await delay;
-			return "hi";
-		}
-
 	}
 }

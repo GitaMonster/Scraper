@@ -1,0 +1,15 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "BL",
+  "rooms": {
+    "3 Bdrm Premium w/Hot Tub" : [
+      "02",
+      "03",
+      "04",
+      "07",
+      "08",
+      "10",
+      "11"
+    ]
+  }
+}

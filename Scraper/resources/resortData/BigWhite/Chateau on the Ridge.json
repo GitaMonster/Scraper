@@ -1,0 +1,13 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "CH",
+  "rooms": {
+    "2 Bdrm Regular" : [
+      "206",
+      "310"
+    ],
+    "2 Bdrm Executive" : [
+      "409"
+    ]
+  }
+}

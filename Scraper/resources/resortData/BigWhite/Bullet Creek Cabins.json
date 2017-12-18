@@ -1,0 +1,20 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "BC",
+  "rooms": {
+    "2 Bdrm Vacation Home w/Hot tub" : [
+      "08",
+      "09",
+      "10",
+      "11",
+      "12"
+    ],
+    "3 Bdrm Vacation Home w/ Hot Tub" : [
+      "13"
+    ],
+    "4 Bdrm Plus Den Vacation Home w/Hot Tub" : [
+      "03",
+      "16"
+    ]
+  }
+}

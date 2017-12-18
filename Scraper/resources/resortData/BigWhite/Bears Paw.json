@@ -1,0 +1,9 @@
+{
+	"resortCode" : "01",
+    "roomNumberCode": "BP",
+    "rooms": {
+        "2 Bdrm Plus Den Premium w/Hot Tub" : [
+            "07"
+           ]
+    }
+}

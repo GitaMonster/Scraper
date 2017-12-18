@@ -25,16 +25,6 @@ namespace Scraper
 		{
 			HotelAvailability hotelAvailability = await GetAvailabilityForHotel(HotelName.BIG_WHITE_BULLET_CREEK, startDate, endDate);
 			Console.WriteLine("Success");
-			List<string> sixth = hotelAvailability.GetRoomNumbersAvailableOnDate(new DateTime(2018, 2, 6));
-			List<string> seventh = hotelAvailability.GetRoomNumbersAvailableOnDate(new DateTime(2018, 2, 7));
-			foreach (string s in sixth)
-			{
-				Console.WriteLine("Available on sixth: " + s);
-			}
-			foreach (string s in seventh)
-			{
-				Console.WriteLine("Available on seventh: " + s);
-			}
 		}
 
 		public static async Task<HotelAvailability> GetAvailabilityForHotel(HotelName hotelName, DateTime startDate, DateTime endDate)
@@ -61,7 +51,6 @@ namespace Scraper
 			List<string> fullRoomNumbers = (List<string>) roomsData[ROOM_NUMBERS_KEY];
 
 			string requestDateString = DateUtils.GetMonthDayShortYearFormat(requestDate);
-			// Dictionary<string, Task<string>> pageRequests = new Dictionary<string, Task<string>>();
 			// TODO: Randomize request order for rooms
 			foreach (string fullRoomNumber in fullRoomNumbers) {
 				Console.WriteLine("Getting data for room: " + fullRoomNumber + " - " + hotelAvailability.Name.Name);
@@ -82,10 +71,7 @@ namespace Scraper
 							resortCode, roomNumberCode, roomNumber, requestDateString);
 				}
 
-				//Task delay = Task.Delay(500);
 				Task<string> page = GetPage(url);
-				//pageRequests.Add(fullRoomNumber, page);
-				//await delay;
 				string pageText = await page;
 				RoomAvailability roomAvailability = BigWhiteParser.ParseSingleRoomAvailability(pageText, roomNumber);
 				if (!roomAvailabilities.ContainsKey(fullRoomNumber))
@@ -97,24 +83,6 @@ namespace Scraper
 					roomAvailabilities[fullRoomNumber].MergeWith(roomAvailability);
 				}
 			}
-
-			/*foreach (KeyValuePair<string, Task<string>> entry in pageRequests)
-			{
-				string pageText = await entry.Value;
-				string fullRoomNumber = entry.Key;
-				string roomNumber = fullRoomNumber.Split(new[] { '-' })[1].Trim();
-				Console.WriteLine("Starting to parse");
-				RoomAvailability roomAvailability = BigWhiteParser.ParseSingleRoomAvailability(pageText, roomNumber);
-				Console.WriteLine("Finished parsing");
-				if (!roomAvailabilities.ContainsKey(fullRoomNumber))
-				{
-					roomAvailabilities.Add(fullRoomNumber, roomAvailability);
-				}
-				else
-				{
-					roomAvailabilities[fullRoomNumber].MergeWith(roomAvailability);
-				}
-			}*/
 		}
 
 		// The fetcher; sends a request to the Big White servers for one page of availability; gets response in form of string containing entire webpage html
@@ -133,8 +101,6 @@ namespace Scraper
 				throw new Exception("Error: the given start date is after the given end date");
 			}
 			List<DateTime> requestDates = new List<DateTime>();
-			// YearMonth startMonth = DateUtils.getYearMonthFromDate(startDate);
-			// YearMonth endMonth = DateUtils.getYearMonthFromDate(endDate);
 			DateTime startMonth = new DateTime(startDate.Year, startDate.Month, 1);
 			DateTime endMonth = new DateTime(endDate.Year, endDate.Month, 1);
 			if (DateTime.Compare(startMonth, endMonth) == 0 || DateTime.Compare(startMonth.AddMonths(1), endMonth) == 0 || DateTime.Compare(startMonth.AddMonths(2), endMonth) == 0)
@@ -143,26 +109,14 @@ namespace Scraper
 			}
 			else
 			{
-				// YearMonth currentYearMonth = startMonth.plusMonths(1);
 				DateTime currentYearMonth = startMonth.AddMonths(1);
-				//Calendar currentDate = new GregorianCalendar(currentYearMonth.getYear(), currentYearMonth.getMonthValue() - 1,
-				//		startDate.get(Calendar.DAY_OF_MONTH));
-				//Calendar lowerDateLimit = (Calendar)startDate.clone();
 				DateTime currentDate = new DateTime(currentYearMonth.Year, currentYearMonth.Month, startDate.Day);
 				DateTime lowerDateLimit = new DateTime(startDate.Year, startDate.Month, startDate.Day);
-				//while (!lowerDateLimit.after(endDate))
 				while (lowerDateLimit <= endDate)
 				{
 					requestDates.Add(currentDate);
-					// currentYearMonth = DateUtils.getYearMonthFromDate(currentDate).plusMonths(4);
 					currentYearMonth = new DateTime(currentDate.Year, currentDate.Month, 1).AddMonths(SINGLE_REQUEST_MONTH_RANGE);
-
-					//currentDate = (Calendar)currentDate.clone();
-					//currentDate.set(Calendar.YEAR, currentYearMonth.getYear());
-					//currentDate.set(Calendar.MONTH, currentYearMonth.getMonthValue() - 1);
 					currentDate = new DateTime(currentYearMonth.Year, currentYearMonth.Month, currentDate.Day);
-					//lowerDateLimit = new GregorianCalendar(currentYearMonth.minusMonths(1).getYear(),
-					//	currentYearMonth.minusMonths(1).getMonthValue(), 1);
 					lowerDateLimit = new DateTime(currentYearMonth.AddMonths(-1).Year, currentYearMonth.AddMonths(-1).Month, 1);
 				}
 			}
@@ -174,8 +128,9 @@ namespace Scraper
 			string fileName = hotelName.Name + ".json";
 			Dictionary<string, Object> roomsData = new Dictionary<string, Object>();
 			string fileText;
+
 			Assembly _assembly = Assembly.GetExecutingAssembly();
-			using (var streamReader = new StreamReader(_assembly.GetManifestResourceStream("Scraper." + fileName)))
+			using (var streamReader = new StreamReader(_assembly.GetManifestResourceStream("Scraper.resources.resortData.BigWhite." + fileName)))
 			{
 				fileText = streamReader.ReadToEnd();
 			}

@@ -1,0 +1,29 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "CK",
+  "rooms": {
+    "2 Bdrm Plus Den Premium w/Hot Tub" : [
+      "108",
+      "112",
+      "204",
+      "205",
+      "207",
+      "209",
+      "210",
+      "213",
+      "310",
+      "313"
+    ],
+    "3 Bdrm Plus Den Premium w/Hot Tub" : [
+      "311"
+    ],
+    "3 Bdrm Premium w/Hot Tub" : [
+      "114",
+      "211",
+      "214"
+    ],
+    "4 Bdrm Premium w/Hot Tub" : [
+      "101"
+    ]
+  }
+}

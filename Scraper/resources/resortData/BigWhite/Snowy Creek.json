@@ -1,0 +1,13 @@
+{
+  "resortCode" : "01",
+  "roomNumberCode" : "SN",
+  "rooms": {
+    "2 Bdrm Plus Den Premium w/Hot Tub" : [
+      "04",
+      "06"
+    ],
+    "3 Bdrm Plus Loft Premium w/Hot Tub" : [
+      "10"
+    ]
+  }
+}
