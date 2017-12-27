@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E494B003-8771-49C8-82C0-887CDDAA1905}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Scraper</RootNamespace>
+    <AssemblyName>Scraper</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\main\BigWhite.cs" />
+    <Compile Include="src\main\Program.cs" />
+    <Compile Include="src\main\SuttonPlace.cs" />
+    <Compile Include="src\model\AvailabilityType.cs" />
+    <Compile Include="src\model\HotelAvailability.cs" />
+    <Compile Include="src\model\HotelName.cs" />
+    <Compile Include="src\model\ResortName.cs" />
+    <Compile Include="src\model\RoomAvailability.cs" />
+    <Compile Include="src\parser\BigWhiteParser.cs" />
+    <Compile Include="src\util\DateUtils.cs" />
+    <Compile Include="src\util\ExcelWriter.cs" />
+    <Compile Include="src\util\Symbols.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Bears Paw.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Black Bear Lodge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Bullet Creek Cabins.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Chateau on the Ridge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Copper Kettle Lodge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Eagles Resort.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Grizzly Lodge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Inn at Big White.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Plaza on the Ridge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Ptarmigan Inn.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Snowy Creek.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Stonebridge Lodge.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Stonegate Resort.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Sundance Resort.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Towering Pines.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Trappers Crossing.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\White Crystal Inn.json" />
+    <EmbeddedResource Include="resources\resortData\BigWhite\Whitefoot Lodge.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
