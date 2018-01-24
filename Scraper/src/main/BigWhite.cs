@@ -42,6 +42,7 @@ namespace Scraper
 
 			Console.WriteLine("\nEarliest available date for " + hotelName.Name + ": " + hotelAvailability.GetEarliestKnownDate().ToLongDateString());
 			Console.WriteLine("Latest available date for " + hotelName.Name + ": " + hotelAvailability.GetLatestKnownDate().ToLongDateString() + "\n");
+			Console.WriteLine("Total number of rooms gathered for " + hotelName.Name + ": " + hotelAvailability.RoomAvailabilities.Count);
 			return hotelAvailability;
 		}
 
@@ -51,6 +52,7 @@ namespace Scraper
 			List<string> fullRoomNumbers = (List<string>) roomsData[ROOM_NUMBERS_KEY];
 
 			string requestDateString = DateUtils.GetMonthDayShortYearFormat(requestDate);
+			// Dictionary<string, Task<string>> pageRequests = new Dictionary<string, Task<string>>();
 			// TODO: Randomize request order for rooms
 			foreach (string fullRoomNumber in fullRoomNumbers) {
 				Console.WriteLine("Getting data for room: " + fullRoomNumber + " - " + hotelAvailability.Name.Name);
@@ -72,6 +74,7 @@ namespace Scraper
 				}
 
 				Task<string> page = GetPage(url);
+				// pageRequests.Add(fullRoomNumber, page);
 				string pageText = await page;
 				RoomAvailability roomAvailability = BigWhiteParser.ParseSingleRoomAvailability(pageText, roomNumber);
 				if (!roomAvailabilities.ContainsKey(fullRoomNumber))
@@ -83,6 +86,22 @@ namespace Scraper
 					roomAvailabilities[fullRoomNumber].MergeWith(roomAvailability);
 				}
 			}
+			/*foreach (KeyValuePair<string, Task<string>> pageRequest in pageRequests)
+			{
+				string fullRoomNumber = pageRequest.Key;
+				string roomNumber = fullRoomNumber.Split(new[] { '-' })[1].Trim();
+				string pageText = await pageRequest.Value;
+				Console.WriteLine("Page received");
+				RoomAvailability roomAvailability = BigWhiteParser.ParseSingleRoomAvailability(pageText, roomNumber);
+				if (!roomAvailabilities.ContainsKey(fullRoomNumber))
+				{
+					roomAvailabilities.Add(fullRoomNumber, roomAvailability);
+				}
+				else
+				{
+					roomAvailabilities[fullRoomNumber].MergeWith(roomAvailability);
+				}
+			}*/
 		}
 
 		// The fetcher; sends a request to the Big White servers for one page of availability; gets response in form of string containing entire webpage html
@@ -92,6 +111,12 @@ namespace Scraper
 			HttpResponseMessage response = await httpClient.GetAsync(urlString);
 
 			return await response.Content.ReadAsStringAsync();
+		}
+
+		public static Dictionary<string, RoomAvailability> GetAggregatedAvailabilitiesForRoomType(Dictionary<string, RoomAvailability> roomAvailabilities,
+			DateTime startDate, DateTime endDate)
+		{
+			return null;
 		}
 
 		private static List<DateTime> CalculateRequestDates(DateTime startDate, DateTime endDate)

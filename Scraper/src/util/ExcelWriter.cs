@@ -36,8 +36,10 @@ namespace Scraper
 
 				worksheet.Cells[1, 1] = hotelAvailability.Name.GetDisplayName();
 
+				Console.WriteLine("About to add date labels");
 				AddAllDateLabels(worksheet, startDate, endDate);
 
+				Console.WriteLine("About to add availabilities");
 				AddAllAvailabilities(worksheet, hotelAvailability, startDate, endDate);
 
 				Directory.CreateDirectory(fileOutputPath);
@@ -55,11 +57,15 @@ namespace Scraper
 				{
 					worksheet.Cells[currentRow, 2] = entry.Key;
 					int currentColumn = DATE_STARTING_COLUMN;
+					Console.WriteLine("Writing excel availability for room " + entry.Key);
 					foreach (DateTime date in DateUtils.GetOrderedDateRange(startDate, endDate))
 					{
 						string symbol = Symbols.GetSymbolForAvailability(entry.Value.TotalAvailability[date]);
+						// Console.WriteLine("About to write cell for date " + DateUtils.GetReadableDateFormat(date));
 						worksheet.Cells[currentRow, currentColumn] = symbol;
-						worksheet.Cells[currentRow, currentColumn].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+						//Console.WriteLine("About to format cell");
+						//worksheet.Cells[currentRow, currentColumn].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+						//Console.WriteLine("Done room");
 						currentColumn++;
 					}
 					currentRow++;

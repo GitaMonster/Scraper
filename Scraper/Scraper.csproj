@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.6.11.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.11\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -52,13 +55,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\main\BigWhite.cs" />
     <Compile Include="src\main\Program.cs" />
+    <Compile Include="src\main\SilverStar.cs" />
     <Compile Include="src\main\SuttonPlace.cs" />
     <Compile Include="src\model\AvailabilityType.cs" />
     <Compile Include="src\model\HotelAvailability.cs" />
     <Compile Include="src\model\HotelName.cs" />
+    <Compile Include="src\model\ResortAvailability.cs" />
     <Compile Include="src\model\ResortName.cs" />
     <Compile Include="src\model\RoomAvailability.cs" />
     <Compile Include="src\parser\BigWhiteParser.cs" />
+    <Compile Include="src\parser\SilverStarParser.cs" />
     <Compile Include="src\util\DateUtils.cs" />
     <Compile Include="src\util\ExcelWriter.cs" />
     <Compile Include="src\util\Symbols.cs" />

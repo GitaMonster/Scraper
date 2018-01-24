@@ -21,6 +21,11 @@ namespace Scraper
 				return String.Format("{0}/{1}/{2}", monthString, dayString, yearString);
 			}
 
+			public static string GetReadableDateFormat(DateTime date)
+			{
+				return date.ToString("MMMM dd, yyyy");
+			}
+
 			public static List<DateTime> GetOrderedDateRange(DateTime startDate, DateTime endDate)
 			{
 				if (startDate > endDate)
