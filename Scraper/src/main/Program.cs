@@ -9,8 +9,8 @@ namespace Scraper
 	class Program
 	{
 		static readonly string EXCEL_OUTPUT_PATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\resources\ExcelOutput\";
-		static readonly bool AGGREGATE_ROOM_TYPES = true;
-		static readonly DateTime START_DATE = new DateTime(2018, 1, 10);
+		static readonly bool AGGREGATE_ROOM_TYPES = false;
+		static readonly DateTime START_DATE = new DateTime(2018, 2, 11);
 		static readonly DateTime END_DATE = new DateTime(2018, 4, 7);
 		static readonly List<HotelName> HOTEL_NAMES = new List<HotelName>{
 			//HotelName.BIG_WHITE_STONEBRIDGE,
@@ -33,8 +33,8 @@ namespace Scraper
 
 		public static void Main(string[] args)
 		{
-			Run();
-			// SilverStar.Run();
+			// Run();
+			SilverCreek.Run();
 			Console.ReadKey();
 		}
 
