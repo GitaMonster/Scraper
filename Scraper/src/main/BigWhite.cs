@@ -13,7 +13,10 @@ namespace Scraper
 {
 	class BigWhite
 	{
-		private const string ROOM_NUMBERS_KEY = "rooms";
+        public static readonly DateTime START_DATE = new DateTime(2018, 2, 11);
+        public static readonly DateTime END_DATE = new DateTime(2018, 4, 7);
+
+        private const string ROOM_NUMBERS_KEY = "rooms";
 		private const string PROPERTY_CODE_KEY = "propertyCode";
 		private const string ROOM_NUMBER_CODE_KEY = "roomNumberCode";
 		private const string RESORT_CODE_KEY = "resortCode";

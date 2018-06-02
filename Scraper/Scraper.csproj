@@ -65,10 +65,12 @@
     <Compile Include="src\model\ResortName.cs" />
     <Compile Include="src\model\RoomAvailability.cs" />
     <Compile Include="src\parser\BigWhiteParser.cs" />
+    <Compile Include="src\parser\SilverCreekParser.cs" />
     <Compile Include="src\parser\SilverStarParser.cs" />
     <Compile Include="src\util\DateUtils.cs" />
     <Compile Include="src\util\ExcelWriter.cs" />
     <Compile Include="src\util\Symbols.cs" />
+    <Compile Include="src\util\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

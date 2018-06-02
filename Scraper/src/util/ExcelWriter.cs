@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using Microsoft.Office.Interop.Excel;
 using Scraper.Model;
-using Scraper.Util;
 
 namespace Scraper
 {

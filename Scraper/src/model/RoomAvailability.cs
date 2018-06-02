@@ -8,10 +8,16 @@ namespace Scraper
 {
 	namespace Model
 	{
-		class RoomAvailability
-		{
-			public string RoomNumber { get; }
-			public Dictionary<DateTime, AvailabilityType> TotalAvailability { get; set; }
+        class RoomAvailability
+        {
+            public string RoomNumber { get; }
+            public Dictionary<DateTime, AvailabilityType> TotalAvailability { get; set; }
+
+            public RoomAvailability(string roomNumber)
+            {
+                RoomNumber = roomNumber;
+                TotalAvailability = new Dictionary<DateTime, AvailabilityType>();
+            }
 
 			public RoomAvailability(string roomNumber, Dictionary<DateTime, AvailabilityType> totalAvailability)
 			{

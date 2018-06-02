@@ -10,9 +10,7 @@ namespace Scraper
 	{
 		static readonly string EXCEL_OUTPUT_PATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\resources\ExcelOutput\";
 		static readonly bool AGGREGATE_ROOM_TYPES = false;
-		static readonly DateTime START_DATE = new DateTime(2018, 2, 11);
-		static readonly DateTime END_DATE = new DateTime(2018, 4, 7);
-		static readonly List<HotelName> HOTEL_NAMES = new List<HotelName>{
+        static readonly List<HotelName> HOTEL_NAMES = new List<HotelName>{
 			//HotelName.BIG_WHITE_STONEBRIDGE,
 			HotelName.BIG_WHITE_BEARS_PAW,
 			HotelName.BIG_WHITE_BLACK_BEAR
@@ -33,20 +31,27 @@ namespace Scraper
 
 		public static void Main(string[] args)
 		{
-			// Run();
-			SilverCreek.Run();
-			Console.ReadKey();
+            // RunBigWhite();
+            RunSilverCreek();
+            Console.ReadKey();
 		}
 
-		private static async void Run()
+        private static void RunSilverCreek()
+        {
+            ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.SILVER_CREEK.Name + @"\");
+            ResortAvailability resortAvailability = SilverCreek.GetResortAvailability(SilverCreek.START_DATE, SilverCreek.END_DATE);
+            excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.SILVER_CREEK]);
+        }
+
+		private static async void RunBigWhite()
 		{
 			ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.BIG_WHITE.Name + @"\");
 			foreach (HotelName hotelName in HOTEL_NAMES)
 			{
-				HotelAvailability hotelAvailability = await BigWhite.GetAvailabilityForHotel(hotelName, START_DATE, END_DATE);
+				HotelAvailability hotelAvailability = await BigWhite.GetAvailabilityForHotel(hotelName, BigWhite.START_DATE, BigWhite.END_DATE);
 				if (AGGREGATE_ROOM_TYPES)
 				{
-					Dictionary<string, RoomAvailability> aggregatedAvailabilities = BigWhite.GetAggregatedAvailabilitiesForRoomType(hotelAvailability.RoomAvailabilities, START_DATE, END_DATE);
+					Dictionary<string, RoomAvailability> aggregatedAvailabilities = BigWhite.GetAggregatedAvailabilitiesForRoomType(hotelAvailability.RoomAvailabilities, BigWhite.START_DATE, BigWhite.END_DATE);
 					hotelAvailability.RoomAvailabilities = aggregatedAvailabilities;
 				}
 				Console.WriteLine("About to enter excel writer");

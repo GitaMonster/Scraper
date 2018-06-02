@@ -27,6 +27,8 @@ namespace Scraper
 			public static readonly HotelName BIG_WHITE_TRAPPERS_CROSSING = new HotelName(ResortName.BIG_WHITE, "Trappers Crossing");
 			public static readonly HotelName BIG_WHITE_WHITEFOOT = new HotelName(ResortName.BIG_WHITE, "Whitefoot Lodge");
 
+            public static readonly HotelName SILVER_CREEK = new HotelName(ResortName.SILVER_CREEK, "Silver Creek");
+
 			public ResortName ResortName { get; }
 			public string Name { get; }
 

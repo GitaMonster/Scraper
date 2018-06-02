@@ -11,6 +11,7 @@ namespace Scraper
 		class ResortName
 		{
 			public static readonly ResortName BIG_WHITE = new ResortName("Big White");
+            public static readonly ResortName SILVER_CREEK = new ResortName("Silver Creek");
 
 			public string Name { get; }
 
