@@ -41,11 +41,9 @@ namespace Scraper
             // TODO: Look at following location headers instead of hardcoding URLs?
             string cookieRequestsQueryString = string.Format("?CIM={0}&CID={1}&CIY={2}&COM={3}&COD={4}&COY={5}&checkInDate={1}-{6}-{2}&checkOutDate={4}-{7}-{5}&AD=2&CH=0&RMS=1&promoCode=&submit=Check+Availability",
                            startDate.Month,
-                           // startDate.Day,
                            startDate.ToString("dd"),
                            startDate.Year,
                            endDate.Month,
-                           // endDate.Day,
                            endDate.ToString("dd"),
                            endDate.Year,
                            startDate.ToString("MMM"),
@@ -58,19 +56,6 @@ namespace Scraper
             string mainAspCookie = GetAspCookie(UTM_COOKIES + "; " + initialAspCookie, mainCookieRequestUrl);
 
             string fullCookie = UTM_COOKIES + "; " + mainAspCookie;
-
-            // string iqHomePageUrl = REQUESTS_ROOT_URL + "asp/IQHome.asp";
-            // GetPage(iqHomePageUrl, fullCookie);
-
-            /*string agentLoginPageQueryString = string.Format("?CheckInMonth={0}&CheckInDay={1}&CheckInYear={2}&CheckOutMonth={3}&CheckOutDay={4}&CheckOutYear={5}&txtAdults=2&txtChildren=0&txtNumRooms=1&txtPromoCode=&txtRateSelected=&ForcedUser1=&ForcedUser2=",
-                                                              startDate.Month,
-                                                              startDate.Day,
-                                                              startDate.Year,
-                                                              endDate.Month,
-                                                              endDate.Day,
-                                                              endDate.Year);
-            string agentLoginPageUrl = REQUESTS_ROOT_URL + "asp/AgentLogin.asp" + agentLoginPageQueryString;
-            GetPage(agentLoginPageUrl, fullCookie);*/
 
             HotelAvailability hotelAvailability = GetHotelAvailability(startDate, endDate, fullCookie);
             hotelAvailability.TrimDateRange(startDate, endDate);
@@ -88,16 +73,14 @@ namespace Scraper
             List<DateTime> datesToRequest = GetDatesToRequest(startDate, endDate);
             foreach (DateTime requestDate in datesToRequest)
             {
+                Console.WriteLine("Getting availabilities for dates around " + DateUtils.GetReadableDateFormat(requestDate));
                 GetPage(iqHomePageUrl, fullCookie);
-                // string pageForCurrentDate = GetAvailabilityPage(fullCookie);
                 DateTime oneMoreThanRequestDate = requestDate.AddDays(1);
                 string agentLoginPageQueryString = string.Format("?CheckInMonth={0}&CheckInDay={1}&CheckInYear={2}&CheckOutMonth={3}&CheckOutDay={4}&CheckOutYear={5}&txtAdults=2&txtChildren=0&txtNumRooms=1&txtPromoCode=&txtRateSelected=&ForcedUser1=&ForcedUser2=",
                                                   requestDate.Month,
-                                                  //requestDate.Day,
                                                   requestDate.ToString("dd"),
                                                   requestDate.Year,
                                                   oneMoreThanRequestDate.Month,
-                                                  // oneMoreThanRequestDate.Day,
                                                   oneMoreThanRequestDate.ToString("dd"),
                                                   oneMoreThanRequestDate.Year);
                 string agentLoginPageUrl = REQUESTS_ROOT_URL + "asp/AgentLogin.asp" + agentLoginPageQueryString;
@@ -136,40 +119,6 @@ namespace Scraper
             string responseCookie = response.Headers.GetValues("Set-Cookie").ToList()[0];
             responseCookie = responseCookie.Split(';')[0];
             return responseCookie;
-        }
-
-        private static void GetIQHomePage(string mainCookie)
-        {
-            string url = "https://reservations.silvercreekcanmore.ca/iqreservations/asp/IQHome.asp";
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            string cookie = UTM_COOKIES + "; " + mainCookie;
-            request.Headers.Add("Cookie", cookie);
-            HttpResponseMessage response = httpClient.SendAsync(request).Result;
-        }
-
-        private static void GetAgentLoginPage(string mainCookie)
-        {
-            string url = "https://reservations.silvercreekcanmore.ca/iqreservations/asp/AgentLogin.asp?CheckInMonth=6&CheckInDay=20&CheckInYear=2018&CheckOutMonth=6&CheckOutDay=21&CheckOutYear=2018&txtAdults=2&txtChildren=0&txtNumRooms=1&txtPromoCode=&txtRateSelected=&ForcedUser1=&ForcedUser2=";
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            string cookie = UTM_COOKIES + "; " + mainCookie;
-            request.Headers.Add("Cookie", cookie);
-            HttpResponseMessage response = httpClient.SendAsync(request).Result;
-        }
-
-        private static string GetAvailabilityPage(string fullCookie)
-        {
-            string url = "https://reservations.silvercreekcanmore.ca/iqreservations/asp/CheckAvailability.asp";
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            request.Headers.Add("Cookie", fullCookie);
-            HttpResponseMessage response = httpClient.SendAsync(request).Result;
-
-            return response.Content.ReadAsStringAsync().Result;
         }
 
         private static string GetPage(string url, string cookie)
