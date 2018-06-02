@@ -112,7 +112,7 @@ namespace Scraper
 				}
 
 				// Final month
-				if (firstMonth.AddMonths(1) < finalMonth)
+                if (firstMonth.AddMonths(1) <= finalMonth)
 				{
 					int finalMonthCellWidth = endDate.Day;
 					int finalMonthEndColumn = startColumn + finalMonthCellWidth - 1;
