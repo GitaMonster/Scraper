@@ -62,8 +62,8 @@ namespace Scraper
 						string symbol = Symbols.GetSymbolForAvailability(entry.Value.TotalAvailability[date]);
 						// Console.WriteLine("About to write cell for date " + DateUtils.GetReadableDateFormat(date));
 						worksheet.Cells[currentRow, currentColumn] = symbol;
-						//Console.WriteLine("About to format cell");
-						//worksheet.Cells[currentRow, currentColumn].HorizontalAlignment = XlHAlign.xlHAlignCenter;
+						// Console.WriteLine("About to format cell");
+						worksheet.Cells[currentRow, currentColumn].HorizontalAlignment = XlHAlign.xlHAlignCenter;
 						//Console.WriteLine("Done room");
 						currentColumn++;
 					}
@@ -84,8 +84,9 @@ namespace Scraper
 				firstMonthRange.Merge();
 				string firstMonthName = startDate.ToString("Y");
 				firstMonthRange.Value = firstMonthName;
+                firstMonthRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-				AddDateLabelsInRange(worksheet, DATE_STARTING_COLUMN, startDate.Day, firstMonthCellWidth);
+                AddDateLabelsInRange(worksheet, DATE_STARTING_COLUMN, startDate.Day, firstMonthCellWidth);
 
 				DateTime firstMonth = new DateTime(startDate.Year, startDate.Month, 1);
 				DateTime finalMonth = new DateTime(endDate.Year, endDate.Month, 1);
@@ -104,8 +105,9 @@ namespace Scraper
 					monthRange.Merge();
 					string monthName = newMonth.ToString("Y");
 					monthRange.Value = monthName;
+                    monthRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-					AddDateLabelsInRange(worksheet, startColumn, 1, monthCellWidth);
+                    AddDateLabelsInRange(worksheet, startColumn, 1, monthCellWidth);
 
 					startColumn = endColumn + 1;
 					newMonth = new DateTime(newMonth.Year, newMonth.Month, 1).AddMonths(1);
@@ -123,8 +125,9 @@ namespace Scraper
 					finalMonthRange.Merge();
 					string finalMonthName = newMonth.ToString("Y");
 					finalMonthRange.Value = finalMonthName;
+                    finalMonthRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-					AddDateLabelsInRange(worksheet, startColumn, 1, finalMonthCellWidth);
+                    AddDateLabelsInRange(worksheet, startColumn, 1, finalMonthCellWidth);
 				}
 			}
 
