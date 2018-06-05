@@ -68,6 +68,7 @@
     <Compile Include="src\parser\SilverCreekParser.cs" />
     <Compile Include="src\parser\SilverStarParser.cs" />
     <Compile Include="src\util\DateUtils.cs" />
+    <Compile Include="src\util\EmailSender.cs" />
     <Compile Include="src\util\ExcelWriter.cs" />
     <Compile Include="src\util\Symbols.cs" />
     <Compile Include="src\util\Validator.cs" />
@@ -93,6 +94,8 @@
     <EmbeddedResource Include="resources\resortData\BigWhite\Trappers Crossing.json" />
     <EmbeddedResource Include="resources\resortData\BigWhite\White Crystal Inn.json" />
     <EmbeddedResource Include="resources\resortData\BigWhite\Whitefoot Lodge.json" />
+    <EmbeddedResource Include="resources\emailSettings\settings.json" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

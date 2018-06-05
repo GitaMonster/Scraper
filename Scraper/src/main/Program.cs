@@ -41,6 +41,7 @@ namespace Scraper
             ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.SILVER_CREEK.Name + @"\");
             ResortAvailability resortAvailability = SilverCreek.GetResortAvailability(SilverCreek.START_DATE, SilverCreek.END_DATE);
             excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.SILVER_CREEK]);
+            EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.SILVER_CREEK);
         }
 
 		private static async void RunBigWhite()
