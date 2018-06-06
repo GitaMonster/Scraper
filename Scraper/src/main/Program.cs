@@ -32,9 +32,18 @@ namespace Scraper
 		public static void Main(string[] args)
 		{
             // RunBigWhite();
-            RunSilverCreek();
+            // RunSilverCreek();
+            RunBanffBoundary();
             Console.ReadKey();
 		}
+
+        private static void RunBanffBoundary()
+        {
+            ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.BANFF_BOUNDARY.Name + @"\");
+            ResortAvailability resortAvailability = BanffBoundary.GetResortAvailability(BanffBoundary.START_DATE, BanffBoundary.END_DATE);
+            excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.BANFF_BOUNDARY]);
+            EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.BANFF_BOUNDARY);
+        }
 
         private static void RunSilverCreek()
         {

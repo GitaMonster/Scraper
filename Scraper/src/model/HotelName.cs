@@ -29,6 +29,8 @@ namespace Scraper
 
             public static readonly HotelName SILVER_CREEK = new HotelName(ResortName.SILVER_CREEK, "Silver Creek");
 
+            public static readonly HotelName BANFF_BOUNDARY = new HotelName(ResortName.BANFF_BOUNDARY, "Banff Boundary");
+
 			public ResortName ResortName { get; }
 			public string Name { get; }
 

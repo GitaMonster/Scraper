@@ -63,7 +63,7 @@ namespace Scraper
             return new ResortAvailability(ResortName.SILVER_CREEK, new Dictionary<HotelName, HotelAvailability> {{HotelName.SILVER_CREEK, hotelAvailability}});
         }
 
-        public static HotelAvailability GetHotelAvailability(DateTime startDate, DateTime endDate, String fullCookie)
+        private static HotelAvailability GetHotelAvailability(DateTime startDate, DateTime endDate, String fullCookie)
         {
             string iqHomePageUrl = REQUESTS_ROOT_URL + "asp/IQHome.asp";
             string availabilityPageUrl = REQUESTS_ROOT_URL + "asp/CheckAvailability.asp";

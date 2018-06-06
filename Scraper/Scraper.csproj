@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\main\BanffBoundary.cs" />
     <Compile Include="src\main\BigWhite.cs" />
     <Compile Include="src\main\Program.cs" />
     <Compile Include="src\main\SilverCreek.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="src\model\ResortAvailability.cs" />
     <Compile Include="src\model\ResortName.cs" />
     <Compile Include="src\model\RoomAvailability.cs" />
+    <Compile Include="src\parser\BanffBoundaryParser.cs" />
     <Compile Include="src\parser\BigWhiteParser.cs" />
     <Compile Include="src\parser\SilverCreekParser.cs" />
     <Compile Include="src\parser\SilverStarParser.cs" />
