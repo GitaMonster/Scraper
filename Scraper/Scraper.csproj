@@ -58,6 +58,7 @@
     <Compile Include="src\main\Program.cs" />
     <Compile Include="src\main\SilverCreek.cs" />
     <Compile Include="src\main\SilverStar.cs" />
+    <Compile Include="src\main\SilverStarVanceCreek.cs" />
     <Compile Include="src\main\SuttonPlace.cs" />
     <Compile Include="src\model\AvailabilityType.cs" />
     <Compile Include="src\model\HotelAvailability.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="src\parser\BigWhiteParser.cs" />
     <Compile Include="src\parser\SilverCreekParser.cs" />
     <Compile Include="src\parser\SilverStarParser.cs" />
+    <Compile Include="src\parser\SilverStarVanceCreekParser.cs" />
     <Compile Include="src\util\DateUtils.cs" />
     <Compile Include="src\util\EmailSender.cs" />
     <Compile Include="src\util\ExcelWriter.cs" />
