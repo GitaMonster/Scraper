@@ -15,7 +15,7 @@ namespace Scraper
 		{
             RunBanffBoundary();
             RunSilverCreek();
-            RunBigWhite();
+            // RunBigWhite();
             // SilverStarVanceCreek.Run();
             Console.ReadKey();
 		}
