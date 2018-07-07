@@ -13,8 +13,8 @@ namespace Scraper
 {
 	class BigWhite
 	{
-        public static readonly DateTime START_DATE = new DateTime(2018, 2, 11);
-        public static readonly DateTime END_DATE = new DateTime(2018, 4, 7);
+        public static readonly DateTime START_DATE = new DateTime(2018, 11, 21);
+        public static readonly DateTime END_DATE = new DateTime(2019, 4, 13);
 
         private const string ROOM_NUMBERS_KEY = "rooms";
 		private const string PROPERTY_CODE_KEY = "propertyCode";
@@ -22,7 +22,26 @@ namespace Scraper
 		private const string RESORT_CODE_KEY = "resortCode";
 		private const int SINGLE_REQUEST_MONTH_RANGE = 4;
 
-		static readonly HttpClient httpClient = new HttpClient();
+        public static readonly List<HotelName> HOTEL_NAMES = new List<HotelName>{
+            HotelName.BIG_WHITE_STONEBRIDGE,
+            HotelName.BIG_WHITE_BEARS_PAW,
+            HotelName.BIG_WHITE_BLACK_BEAR,
+            HotelName.BIG_WHITE_BULLET_CREEK,
+            HotelName.BIG_WHITE_CHATEAU_RIDGE,
+            HotelName.BIG_WHITE_COPPER_KETTLE,
+            HotelName.BIG_WHITE_EAGLES,
+            HotelName.BIG_WHITE_GRIZZLY,
+            HotelName.BIG_WHITE_PLAZA_RIDGE,
+            HotelName.BIG_WHITE_PTARMIGAN,
+            HotelName.BIG_WHITE_SNOWY_CREEK,
+            HotelName.BIG_WHITE_STONEGATE,
+            HotelName.BIG_WHITE_SUNDANCE,
+            HotelName.BIG_WHITE_TOWERING_PINES,
+            HotelName.BIG_WHITE_TRAPPERS_CROSSING,
+            HotelName.BIG_WHITE_WHITEFOOT
+        };
+
+        static readonly HttpClient httpClient = new HttpClient();
 
 		public static async void Run(DateTime startDate, DateTime endDate)
 		{

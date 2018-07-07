@@ -10,8 +10,8 @@ namespace Scraper
     class BanffBoundary
     {
         private static readonly string REQUEST_URL = "https://secure2.webrez.com//Bookings105/activity-edit.html?callback=jQuery214028903079106275786_1528253322949&mode=command&command=roomsearch_version2&table=hotels&transaction_id=-1&listing_id=1551&hotel_id=1551&date_from={0}-{1}-{2}&date_to={3}-{4}-{5}&access_code=&package_ids=&currency=CAD&version=30&_=1528253322950";
-        public static readonly DateTime START_DATE = new DateTime(2018, 7, 1);
-        public static readonly DateTime END_DATE = new DateTime(2018, 9, 15);
+        public static readonly DateTime START_DATE = DateTime.Now;
+        public static readonly DateTime END_DATE = new DateTime(2019, 8, 15);
 
         private static HttpClient httpClient = new HttpClient();
 

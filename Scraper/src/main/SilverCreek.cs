@@ -13,8 +13,8 @@ namespace Scraper
     {
         private static readonly string UTM_COOKIES = "__utmc=19053498; __utma=19053498.2068434907.1527465609.1527465609.1527467484.2; __utmb=19053498; __utmz=19053498.1527467484.2.2.utmccn=(referral)|utmcsr=google.ca|utmcct=/|utmcmd=referral";
         private static readonly string REQUESTS_ROOT_URL = "https://reservations.silvercreekcanmore.ca/iqreservations/";
-        public static readonly DateTime START_DATE = new DateTime(2018, 7, 1);
-        public static readonly DateTime END_DATE = new DateTime(2018, 9, 15);
+        public static readonly DateTime START_DATE = DateTime.Now;
+        public static readonly DateTime END_DATE = new DateTime(2018, 12, 26);
 
         private static readonly HttpClientHandler httpClientHandler = new HttpClientHandler();
         private static HttpClient httpClient;
