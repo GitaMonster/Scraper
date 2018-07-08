@@ -31,6 +31,8 @@ namespace Scraper
 
             public static readonly HotelName BANFF_BOUNDARY = new HotelName(ResortName.BANFF_BOUNDARY, "Banff Boundary");
 
+            public static readonly HotelName FIRE_MOUNTAIN = new HotelName(ResortName.FIRE_MOUNTAIN, "Fire Mountain");
+
 			public ResortName ResortName { get; }
 			public string Name { get; }
 

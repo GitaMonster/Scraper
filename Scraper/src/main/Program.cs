@@ -6,6 +6,7 @@ using Scraper.Util;
 
 namespace Scraper
 {
+    // TODO: Is it necessary to override hashCode and equals for C# models?
 	class Program
 	{
 		static readonly string EXCEL_OUTPUT_PATH = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\resources\ExcelOutput\";
@@ -14,7 +15,8 @@ namespace Scraper
 		public static void Main(string[] args)
 		{
             RunBanffBoundary();
-            RunSilverCreek();
+            RunFireMountain();
+            // RunSilverCreek();
             // RunBigWhite();
             // SilverStarVanceCreek.Run();
             Console.ReadKey();
@@ -26,6 +28,14 @@ namespace Scraper
             ResortAvailability resortAvailability = BanffBoundary.GetResortAvailability(BanffBoundary.START_DATE, BanffBoundary.END_DATE);
             excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.BANFF_BOUNDARY]);
             EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.BANFF_BOUNDARY);
+        }
+
+        private static void RunFireMountain()
+        {
+            ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.FIRE_MOUNTAIN.Name + @"\");
+            ResortAvailability resortAvailability = FireMountain.GetResortAvailability(FireMountain.START_DATE, FireMountain.END_DATE);
+            excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.FIRE_MOUNTAIN]);
+            EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.FIRE_MOUNTAIN);
         }
 
         private static void RunSilverCreek()

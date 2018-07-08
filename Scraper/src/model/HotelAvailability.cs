@@ -76,6 +76,15 @@ namespace Scraper
 				}
 				return availableRoomNumbers;
 			}
+
+            public void MergeWith(HotelAvailability otherAvailabililty)
+            {
+                foreach (KeyValuePair<string, RoomAvailability> roomAvailabilityInfo in otherAvailabililty.RoomAvailabilities)
+                {
+                    RoomAvailability correspondingRoomAvailability = RoomAvailabilities[roomAvailabilityInfo.Key];
+                    roomAvailabilityInfo.Value.MergeWith(correspondingRoomAvailability);
+                }
+            }
 		}
 	}
 }
