@@ -35,6 +35,8 @@ namespace Scraper
 
             public static readonly HotelName MYSTIC_SPRINGS = new HotelName(ResortName.MYSTIC_SPRINGS, "Mystic Springs");
 
+            public static readonly HotelName SUMMIT_PENTHOUSES = new HotelName(ResortName.SUMMIT_PENTHOUSES, "Summit Penthouses");
+
             public ResortName ResortName { get; }
 			public string Name { get; }
 
@@ -46,7 +48,15 @@ namespace Scraper
 
 			public String GetDisplayName()
 			{
-				return ResortName.Name + "-" + Name;
+                if (ResortName.Name == Name)
+                {
+                    return ResortName.Name;  //prevents redundant duplicate resort/hotel names for single-hotel resorts
+                }
+                else
+                {
+                    return ResortName.Name + "-" + Name;
+                }
+				
 			}
 		}
 	}
