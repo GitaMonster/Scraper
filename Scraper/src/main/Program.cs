@@ -14,9 +14,12 @@ namespace Scraper
 
 		public static void Main(string[] args)
 		{
-            RunBanffBoundary();
-            RunFireMountain();
+            //RunBanffBoundary();
+            //RunFireMountain();
+            RunMysticSprings();
+            //MysticSprings.Run();
             // RunSilverCreek();
+
             // RunBigWhite();
             // SilverStarVanceCreek.Run();
             Console.ReadKey();
@@ -36,6 +39,14 @@ namespace Scraper
             ResortAvailability resortAvailability = FireMountain.GetResortAvailability(FireMountain.START_DATE, FireMountain.END_DATE);
             excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.FIRE_MOUNTAIN]);
             EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.FIRE_MOUNTAIN);
+        }
+
+        private static void RunMysticSprings()
+        {
+            ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.MYSTIC_SPRINGS.Name + @"\");
+            ResortAvailability resortAvailability = MysticSprings.GetResortAvailability(MysticSprings.START_DATE, MysticSprings.END_DATE);  
+            excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.MYSTIC_SPRINGS]);
+            EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.MYSTIC_SPRINGS);
         }
 
         private static void RunSilverCreek()

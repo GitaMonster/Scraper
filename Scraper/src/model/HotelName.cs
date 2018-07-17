@@ -33,7 +33,9 @@ namespace Scraper
 
             public static readonly HotelName FIRE_MOUNTAIN = new HotelName(ResortName.FIRE_MOUNTAIN, "Fire Mountain");
 
-			public ResortName ResortName { get; }
+            public static readonly HotelName MYSTIC_SPRINGS = new HotelName(ResortName.MYSTIC_SPRINGS, "Mystic Springs");
+
+            public ResortName ResortName { get; }
 			public string Name { get; }
 
 			public HotelName(ResortName resortName, string name)

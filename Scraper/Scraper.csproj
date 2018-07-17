@@ -56,6 +56,7 @@
     <Compile Include="src\main\BanffBoundary.cs" />
     <Compile Include="src\main\BigWhite.cs" />
     <Compile Include="src\main\FireMountain.cs" />
+    <Compile Include="src\main\MysticSprings.cs" />
     <Compile Include="src\main\Program.cs" />
     <Compile Include="src\main\SilverCreek.cs" />
     <Compile Include="src\main\SilverStar.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="src\parser\BanffBoundaryParser.cs" />
     <Compile Include="src\parser\BigWhiteParser.cs" />
     <Compile Include="src\parser\FireMountainParser.cs" />
+    <Compile Include="src\parser\MysticSpringsParser.cs" />
     <Compile Include="src\parser\SilverCreekParser.cs" />
     <Compile Include="src\parser\SilverStarParser.cs" />
     <Compile Include="src\parser\SilverStarVanceCreekParser.cs" />
