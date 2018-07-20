@@ -16,9 +16,10 @@ namespace Scraper
 		{
             //RunBanffBoundary();
             //RunFireMountain();
-            RunMysticSprings();
-            //MysticSprings.Run();
-            // RunSilverCreek();
+            //RunMysticSprings();
+            //MysticSprings.Run();  //for testing only
+            //RunSilverCreek();    //website is down
+            RunSummitPenthouses();
 
             // RunBigWhite();
             // SilverStarVanceCreek.Run();
@@ -36,7 +37,7 @@ namespace Scraper
         private static void RunFireMountain()
         {
             ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.FIRE_MOUNTAIN.Name + @"\");
-            ResortAvailability resortAvailability = FireMountain.GetResortAvailability(FireMountain.START_DATE, FireMountain.END_DATE);
+            ResortAvailability resortAvailability = FireMountain.GetResortAvailability(FireMountain.START_DATE, FireMountain.END_DATE);   //;
             excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.FIRE_MOUNTAIN]);
             EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.FIRE_MOUNTAIN);
         }
@@ -47,6 +48,14 @@ namespace Scraper
             ResortAvailability resortAvailability = MysticSprings.GetResortAvailability(MysticSprings.START_DATE, MysticSprings.END_DATE);  
             excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.MYSTIC_SPRINGS]);
             EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.MYSTIC_SPRINGS);
+        }
+
+        private static void RunSummitPenthouses()
+        {
+            ExcelWriter excelWriter = new ExcelWriter(EXCEL_OUTPUT_PATH + ResortName.SUMMIT_PENTHOUSES.Name + @"\");
+            ResortAvailability resortAvailability = SummitPenthouses.GetResortAvailability(SummitPenthouses.START_DATE, SummitPenthouses.END_DATE); 
+            excelWriter.WriteHotelAvailability(resortAvailability.HotelAvailabilities[HotelName.SUMMIT_PENTHOUSES]);
+            EmailSender.SendEmail(EXCEL_OUTPUT_PATH, HotelName.SUMMIT_PENTHOUSES);
         }
 
         private static void RunSilverCreek()

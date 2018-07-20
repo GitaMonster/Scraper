@@ -15,6 +15,12 @@ namespace Scraper
         //NOTE THAT FOR SUMMIT PENTHOUSES, AVAILABILITY ON WEBSITE MAY APPEAR DIFFERENTLY THAN AVAILABILITY IN EXCEL SHEETS, ONLY BECAUSE THERE IS A 2 NIGHT MINIMUM; 
         //THE AVAILABILITY IN THE EXCEL SHEETS IS ACCURATE, AS LONG AS CIRRUS/LEAVETOWN MAINTAINS THE SAME MINIMUM STAY (DEFAULT 2 NIGHTS) AS THE RESORT.
 
+            //I know the remaining problem: it's that the rooms that are available on the website are particular unit numbers; so if one unit is available, the same one has
+            //to be available the next night (2 night min), not a different room; room changes do not count as available.
+            //so what i need to do is check the actual unit numbers in the html of the webpage, and ensure that the same unit is available 2 nights in a row for the unit to be available.
+
+
+
         private static readonly string REQUEST_URL = "https://secure2.webrez.com/Bookings105/activity-edit.html?callback=jQuery2140809114576402336_1531835696610&mode=command&command=roomsearch_version2&table=hotels&transaction_id=-1&listing_id=1759&hotel_id=1759&date_from={0}-{1}-{2}&date_to={3}-{4}-{5}&access_code=&package_ids=&currency=CAD&_=1531835696611";
 
         public static readonly DateTime START_DATE = DateTime.Now;
