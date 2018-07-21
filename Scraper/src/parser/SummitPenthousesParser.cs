@@ -97,8 +97,6 @@ namespace Scraper.src.parser
             {
                 if (totalIndividualUnitsAvailable.Values[1].Contains(s)) //make sure sorted list index starts at 0
                 {
-                    Console.WriteLine(roomName + "   this is the first date and room avail. date: " + dates[0]);
-                    Console.ReadLine();
                     totalAvailability[dates[0]] = AvailabilityType.AVAILABLE;
                 }
             }
