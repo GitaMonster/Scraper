@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Scraper.Model;
-using Scraper.Parser;
+using Scraper.parser;
 
 namespace Scraper
 {
