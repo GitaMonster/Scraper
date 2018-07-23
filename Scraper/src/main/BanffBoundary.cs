@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 
-using Scraper.Parser;
+using Scraper.parser;
 using Scraper.Model;
 
 namespace Scraper
