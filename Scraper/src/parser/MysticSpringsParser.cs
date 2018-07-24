@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 using Newtonsoft.Json;
 using Scraper.Model;
 
-namespace Scraper.Parser
+namespace Scraper.parser
 {
     class MysticSpringsParser
     {
@@ -16,8 +16,9 @@ namespace Scraper.Parser
         //if the webpage, under table class="orrs_search_table1" Contains "2 Bedroom Chalet", then it's avail.
         public static void ParseHotelAvailability(HotelAvailability hotelAvailability, string response, DateTime date)
         {
+            System.IO.File.WriteAllText(@"C:\Users\Chloe\source\repos\TESTFORJSON\MysticSpringsJson.txt", response);
 
-            Dictionary<DateTime, AvailabilityType> totalAvailability = hotelAvailability.RoomAvailabilities[TWO_BEDROOM_CHALET].TotalAvailability;    //the string is the key, of the key-value pair of the only dictionary entry
+            Dictionary<DateTime, AvailabilityType> totalAvailability = hotelAvailability.RoomAvailabilities[TWO_BEDROOM_CHALET].TotalAvailability;    //the string is the key of the key-value pair of the only dictionary entry
 
             if (response.Contains(TWO_BEDROOM_CHALET))
             {
