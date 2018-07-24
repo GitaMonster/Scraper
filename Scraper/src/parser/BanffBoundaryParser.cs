@@ -16,7 +16,7 @@ namespace Scraper.parser
             int endIndex = response.Length - 1;
             string json = response.Substring(startIndex, endIndex - startIndex);
 
-            System.IO.File.WriteAllText(@"C:\Users\Chloe\source\repos\TESTFORJSON\BanffBoundaryJson.txt", json);
+            //System.IO.File.WriteAllText(@"C:\Users\Chloe\source\repos\TESTFORJSON\BanffBoundaryJson.txt", json);
 
             Dictionary<string, dynamic> root = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
 

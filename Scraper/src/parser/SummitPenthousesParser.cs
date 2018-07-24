@@ -30,7 +30,7 @@ namespace Scraper.src.parser
             int endIndex = response.Length - 1;
             string json = response.Substring(startIndex, endIndex - startIndex);
 
-            System.IO.File.WriteAllText(@"C:\Users\Chloe\source\repos\TESTFORJSON\SummitJson.txt", json);
+            //System.IO.File.WriteAllText(@"C:\Users\Chloe\source\repos\TESTFORJSON\SummitJson.txt", json);
       
             Dictionary<string, dynamic> root = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
 
@@ -79,9 +79,6 @@ namespace Scraper.src.parser
 
             //corner case for first and last sorted list entries:
             List<string> firstDateAvailableUnits = totalIndividualUnitsAvailable.First().Value;
-
-            //Console.WriteLine(firstDateAvailableUnits.Count);  //zero, which is correct.
-            //Console.ReadLine();
 
             //TESTING:
             //foreach (string s in firstDateAvailableUnits)
