@@ -64,7 +64,7 @@ namespace Scraper
                 //generate random numbers until all dates have been randomly generated
 
                 //return a random number within the specified range; inclusive lower bound, exclusive upper bound
-                int randomCounter = random.Next(0, days + 2);  //+2 because want to include the last day, and the upper bound is exclusive.
+                int randomCounter = random.Next(0, days + 1);  //+ because want to include the last day, and the upper bound is exclusive.
                 //ensure that randomCounter is not a duplicate by adding it to the HashSet:
                 if (daysToAdd.Add(randomCounter))
                 {
